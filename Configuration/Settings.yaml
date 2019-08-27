@@ -1,0 +1,20 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        PunktDe.Mautic: true
+  Flow:
+    http:
+      chain:
+        'process':
+          chain:
+            'chooseCorrectDimension':
+              position: 'before routing'
+              component: PunktDe\Mautic\Components\RedirectToCorrectDimensionComponent
+  Form:
+    presets:
+      default:
+        finisherPresets:
+          'PunktDe.Mautic:UpdateUser':
+            implementationClassName: PunktDe\Mautic\Finishers\MauticUpdateUserFinisher
+            options: { }

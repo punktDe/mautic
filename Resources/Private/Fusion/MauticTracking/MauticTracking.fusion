@@ -1,0 +1,5 @@
+prototype(PunktDe.Mautic:MauticTracking) < prototype(Neos.Fusion:Template) {
+    templatePath = 'resource://PunktDe.Mautic/Private/Fusion/MauticTracking/MauticTracking.html'
+    url = ${Configuration.setting('PunktDe.Mautic.mauticServer.url')}
+    @if.onlyIfSet = ${this.url}
+}

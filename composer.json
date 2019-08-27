@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "punktde/mautic",
+    "require": {
+        "neos/flow": "*",
+        "mautic/api-library": "^2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PunktDe\\Mautic\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "PunktDe.Mautic"
+        }
+    }
+}

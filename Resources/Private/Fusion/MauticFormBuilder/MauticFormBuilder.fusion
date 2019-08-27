@@ -1,0 +1,3 @@
+prototype(PunktDe.Mautic.FormBuilder:MauticForm.Definition) < prototype(Neos.Form.Builder:Finisher.Definition) {
+    formElementType = 'PunktDe.Mautic:UpdateUser'
+}

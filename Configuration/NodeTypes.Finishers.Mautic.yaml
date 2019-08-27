@@ -1,0 +1,37 @@
+'PunktDe.Mautic.FormBuilder:MauticForm':
+  superTypes:
+    'Neos.Form.Builder:AbstractFinisher': true
+  ui:
+    label: 'Mautic Finisher'
+    icon: 'check-square-o'
+    inspector:
+      groups:
+        'finisher':
+          icon: 'icheck-square-o'
+        'finisher-attachments':
+          label: i18n
+          position: 60
+          icon: 'icon-paperclip'
+
+
+'Neos.Form.Builder:FormElement':
+  superTypes:
+    'PunktDe.Mautic.FormBuilder:MauticFormIdentifierMixin': true
+  ui:
+    inspector:
+      groups:
+        'mauticSection':
+          label: 'Mautic'
+          position: 200
+          icon: 'icon-square-o'
+
+
+'PunktDe.Mautic.FormBuilder:MauticFormIdentifierMixin':
+  properties:
+    'mauticIdentifier':
+      type: string
+      ui:
+        label: 'Mautic Identifier'
+        reloadIfChanged: false
+        inspector:
+          group: 'mauticSection'
