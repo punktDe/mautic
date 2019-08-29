@@ -3,7 +3,7 @@
     "type": "neos-package",
     "name": "punktde/mautic",
     "require": {
-        "neos/flow": "*",
+        "neos/neos": "^4.0 || ^5.0",
         "mautic/api-library": "^2.0.0"
     },
     "autoload": {
