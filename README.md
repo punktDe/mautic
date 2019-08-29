@@ -8,20 +8,8 @@ This Plugin enables the usage of Marketing Automation Tool Mautic together with 
 - SEO friendly dynamic content
 
 # Installation
-Add the following code to your composer.json (or expand your `repositories` if already existing)
 
-    "repositories": [
-        {"type": "git", "url": "git@github.com:punktDe/Mautic.git"}
-      ],
-    
- 
-Add the dependency to your requirements in the composer.json:
-
-    "punktde/mautic": "@dev"
-    
-Run `composer update` in your project. 
-
-This is going to change as soon as this package will be avaibale at packagist. 
+    composer require punktde/mautic 
 
 # Configuration
 
@@ -65,6 +53,8 @@ To pass information from yaml forms to Mautic, you need to define which form ele
 Add the following property to those fields:   
 
     mauticIdentifier: 'firstname'
+    
+**Due to a bug in Mautic API, `mauticIdentifier` must be small case.**
 
 
 You also need to add the following finisher:
@@ -99,14 +89,17 @@ The value of `mauticIdentifier` must be a defined user field (so called custom f
 [custom fields](https://www.mautic.org/docs/en/contacts/manage_fields.html) to fit your needs. 
 
 
+
 ### Form in FormBuilder Format
 
 Forms created by FormBuilder require the editor to enter the Mautic identifier in the Neos backend. This can be achieved by selecting
-the form element and setting up the value in the settings bar on the right side of your UI.
+the form element and setting up the value in the settings bar on the right side of your UI. 
+
+**Due to a bug in Mautic API, `mauticIdentifier` must be small case.**
 
 You must also register the Mautic finisher for this form. 
 
-![](ReadmeFiles/register-Finisher.gif)
+![](ReadmeFiles/registerFinisher.gif)
 
 
 # Dynamic Content
@@ -142,3 +135,12 @@ You can show a different content dimension to users belonging to different Mauti
 - Visit the backend, change the dimension and edit content. Publish it.  
 
 ![](ReadmeFiles/changeDimension.gif)
+
+# Social Media Tracking
+
+It is possible to track users coming from different sources using UTM-Tags. Just add any UTM Tag to your link before 
+you post it on social media:
+
+    https://punkt.de/blog/post?utm-source=AnySourceName
+    
+When a user has UTM-Tags and submit a form, this information will also saved in Mautic.

@@ -1,9 +1,10 @@
 {
-    "description": "",
+    "description": "This Plugin enables the usage of Marketing Automation Tool Mautic together with Neos CMS.",
     "type": "neos-package",
     "name": "punktde/mautic",
+    "license": "MIT",
     "require": {
-        "neos/neos": "^4.0 || ^5.0",
+        "neos/neos": "^4.0",
         "mautic/api-library": "^2.0.0"
     },
     "autoload": {
