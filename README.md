@@ -1,27 +1,27 @@
-Neos Mautic Plug-in
+Neos Mautic Plugin
 ====================
 
-This Plug-in enables the usage of Marketing Automation Tool Mautic together with Neos CMS. It's key features are
+This Plugin enables the usage of Marketing Automation Tool Mautic together with Neos CMS. Its key features are:
 
 - Add Mautic Tracking in two easy steps
 - Data Collection via Neos Forms & Neos FormBuilder Forms
 - SEO friendly dynamic content
 
 # Installation
-Add in composer.json (or expand your `repositories` if already existing)
+Add the following code to your composer.json (or expand your `repositories` if already existing)
 
     "repositories": [
         {"type": "git", "url": "git@github.com:punktDe/Mautic.git"}
       ],
     
  
-Add in composer.json in your requirements:
+Add the dependency to your requirements in the composer.json:
 
     "punktde/mautic": "@dev"
     
-Execute `composer update` in Project. 
+Run `composer update` in your project. 
 
-This is going to change, when this package is represented in packagist. 
+This is going to change as soon as this package will be avaibale at packagist. 
 
 # Configuration
 
@@ -30,12 +30,12 @@ This is going to change, when this package is represented in packagist.
 - Visit your Mautic installation and [create a user for API](https://mautic.com/help/users-and-roles/). 
 - [Enable API and HTTP basic auth](https://mautic.com/help/api-quick-start/). Optional: Be sure your Mautic installation 
 is running on HTTPS for the sake of security.
-- Skip this, if your Website and Mautic are running on the same server:
-    - [Enable CORS](https://mautic.com/help/getting-started-mautic-cloud/#4), enter your site in `valid domains`.
+- Skip this, if your website and Mautic are running on the same server:
+    - [Enable CORS](https://mautic.com/help/getting-started-mautic-cloud/#4), add your site to `valid domains`.
 
-### Configure Plug-in
+### Configure Plugin
 
-Enter following Configuration in your Site Settings.yaml
+Add the following configuration to your site's Settings.yaml
 
     PunktDe:
       Mautic:
@@ -47,27 +47,27 @@ Enter following Configuration in your Site Settings.yaml
           
 # Enable Tracking
 
-- Be sure you entered the correct Mautic URL in your configuration.
-- Place Mautic Tracking Template at the bottom of your `<body>`:
+- Ensure you have entered the correct Mautic URL in your configuration.
+- Place Mautic tracking template at the bottom of your `<body>`:
 
-
-        mautic = PunktDe.Mautic:MauticTracking
+  ```
+  mautic = PunktDe.Mautic:MauticTracking
+  ```
     
-    
-Add this code to every page fusion file you want them to be tracked. If you want all pages being tracked, add this 
-piece to `Root.fusion` or `AbstractPage.fusion` of your page.
+Add this code to every page's fusion file you want to be tracked. If you want to track all pages, add this 
+piece to the `Root.fusion` or `AbstractPage.fusion` of your page.
 
 # Pass Information from Form to Mautic
 
 ### Form in yaml format
 
-To pass information from yaml forms to mautic, you need to define which form elements should be taken into account.
-Add following property:   
+To pass information from yaml forms to Mautic, you need to define which form elements should be taken into account.
+Add the following property to those fields:   
 
     mauticIdentifier: 'firstname'
 
 
-You also need to add following finisher to the form:
+You also need to add the following finisher:
 
     identifier: 'PunktDe.Mautic:UpdateUser'
     
@@ -96,25 +96,25 @@ An example form looks like this:
         identifier: 'PunktDe.Mautic:UpdateUser'
 
 The value of `mauticIdentifier` must be a defined user field (so called custom field) in Mautic. You can search, edit or create new
-[custom fields](https://www.mautic.org/docs/en/contacts/manage_fields.html) to fit to your needs. 
+[custom fields](https://www.mautic.org/docs/en/contacts/manage_fields.html) to fit your needs. 
 
 
 ### Form in FormBuilder Format
 
-Forms created by FormBuilder requires the editors to enter Mautic Identifier in Neos Backend. This can be achieved by selecting
-the form element and setting up the value on the settings bar right side of your UI.
+Forms created by FormBuilder require the editor to enter the Mautic identifier in the Neos backend. This can be achieved by selecting
+the form element and setting up the value in the settings bar on the right side of your UI.
 
-You must also register the Mautic Finisher for this form. 
+You must also register the Mautic finisher for this form. 
 
 ![](ReadmeFiles/register-Finisher.gif)
 
 
 # Dynamic Content
 
-You can show a different content dimension to different Mautic Segments.
+You can show a different content dimension to users belonging to different Mautic segments.
 
 - [Create a new segment in Mautic](https://mautic.com/help/segments/).
-- Define segments in your `settings.yaml`. Name your neos dimensions same as your mautic segments.
+- Define segments in your `settings.yaml`. Use the same name for your Neos dimensions as well as your mautic segments.
 
 
     Neos:
@@ -138,7 +138,7 @@ You can show a different content dimension to different Mautic Segments.
                   - twitter
                 uriSegment: twitter
 
-- You can combine multiple dimensions (f.e. language) without problem.
-- Visit backend, change the dimension and edit content. Publish it.  
+- You can combine multiple dimensions (e.g. language) without problem.
+- Visit the backend, change the dimension and edit content. Publish it.  
 
 ![](ReadmeFiles/changeDimension.gif)
