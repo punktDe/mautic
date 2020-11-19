@@ -239,7 +239,7 @@ class RedirectToCorrectDimensionComponent implements ComponentInterface
      */
     protected function mauticUserIsIdentifiedByCookie(ComponentContext $componentContext): bool
     {
-        $cookie = $this->getHttpRequestFromComponent($componentContext)->getCookie('mtc_id');
+        $cookie = $this->getHttpRequestFromComponent($componentContext)->getCookieParams()['mtc_id'];
         return $cookie === null ? false : true;
     }
 
@@ -250,11 +250,11 @@ class RedirectToCorrectDimensionComponent implements ComponentInterface
     protected function getMauticSegmentFromCookieIfAvailable(ComponentContext $componentContext): string
     {
         $httpRequest = $this->getHttpRequestFromComponent($componentContext);
-        $cookie = $httpRequest->getCookie('mautic_segment');
+        $cookie = $httpRequest->getCookieParams()['mautic_segment'];
         if ($cookie === null) {
             return '';
         }
-        return $cookie->getValue();
+        return $cookie;
     }
 
     /**
@@ -264,7 +264,7 @@ class RedirectToCorrectDimensionComponent implements ComponentInterface
     protected function getMauticUserId(ComponentContext $componentContext): int
     {
         $httpRequest = $this->getHttpRequestFromComponent($componentContext);
-        $cookie = $httpRequest->getCookie('mtc_id');
+        $cookie = $httpRequest->getCookieParams()['mtc_id'];
         return $cookie->getValue() !== '' ? (int)$cookie->getValue() : 0;
     }
 }

@@ -51,10 +51,7 @@ class MauticUpdateUserFinisher extends AbstractFinisher
      */
     protected function mauticUserIsIdentifiedByCookie(): bool
     {
-        $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
-        $cookie = $request->getCookie('mtc_id');
-
-        return $cookie === null ? false : true;
+        return $this->getMauticCookie() === null ? false : true;
     }
 
     /**
@@ -62,10 +59,17 @@ class MauticUpdateUserFinisher extends AbstractFinisher
      */
     protected function getUserIdFromCookie(): int
     {
-        $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
-        $leadMauticId = $request->getCookie('mtc_id');
+        $leadMauticId = $this->getMauticCookie();
         return $leadMauticId->getValue() !== '' ? (int)$leadMauticId->getValue() : 0;
+    }
 
+    /**
+     * @return int
+     */
+    protected function getMauticCookie(): ?string
+    {
+        $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
+        return $request->getCookieParams()['mtc_id'];
     }
 
     /**
