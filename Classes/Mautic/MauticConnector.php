@@ -77,6 +77,7 @@ class MauticConnector
      */
     public function sendUserUpdateToMauticAPI(int $userId, array $contactData): void
     {
+        die('OOK');
         $contactApi = $this->getContactsApi();
         $contactData['owner'] = '1';
         $contactApi->edit($userId, $contactData);

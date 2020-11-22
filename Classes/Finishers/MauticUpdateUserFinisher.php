@@ -64,7 +64,7 @@ class MauticUpdateUserFinisher extends AbstractFinisher
     }
 
     /**
-     * @return int
+     * @return ?string
      */
     protected function getMauticCookie(): ?string
     {
