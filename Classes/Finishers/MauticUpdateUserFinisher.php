@@ -60,7 +60,7 @@ class MauticUpdateUserFinisher extends AbstractFinisher
     protected function getUserIdFromCookie(): int
     {
         $leadMauticId = $this->getMauticCookie();
-        return $leadMauticId->getValue() !== '' ? (int)$leadMauticId->getValue() : 0;
+        return $leadMauticId !== '' ? (int)$leadMauticId : 0;
     }
 
     /**
@@ -69,7 +69,8 @@ class MauticUpdateUserFinisher extends AbstractFinisher
     protected function getMauticCookie(): ?string
     {
         $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
-        return $request->getCookieParams()['mtc_id'];
+        $cookies = $request->getCookieParams();
+        return isset($cookies['mtc_id']) ? $cookies['mtc_id'] : '';
     }
 
     /**
