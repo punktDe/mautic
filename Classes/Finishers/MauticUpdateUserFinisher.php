@@ -96,7 +96,7 @@ class MauticUpdateUserFinisher extends AbstractFinisher
     protected function getUtmTags(): array
     {
         $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
-        $params = $request->getArguments();
+        parse_str($request->getUri()->getQuery(), $params);
         $utmTags = [];
         foreach ($params as $paramName => $paramValue) {
             if (strpos($paramName, 'utm_') !== false) {

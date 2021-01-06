@@ -19,7 +19,7 @@ This Plugin enables the usage of Marketing Automation Tool Mautic together with 
 - [Enable API and HTTP basic auth](https://mautic.com/help/api-quick-start/). Optional: Be sure your Mautic installation 
 is running on HTTPS for the sake of security.
 - Skip this, if your website and Mautic are running on the same server:
-    - [Enable CORS](https://mautic.com/help/getting-started-mautic-cloud/#4), add your site to `valid domains`.
+- [Enable CORS](https://mautic.com/help/getting-started-mautic-cloud/#4), add your site to `valid domains`.
 
 ### Configure Plugin
 
