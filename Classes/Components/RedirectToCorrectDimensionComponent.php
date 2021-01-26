@@ -10,8 +10,8 @@ namespace PunktDe\Mautic\Components;
 use Neos\Flow\Configuration\ConfigurationManager;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Http\Component\ComponentChain;
-use Neos\Flow\Http\Component\ComponentInterface;
-use Neos\Flow\Http\Component\ComponentContext;
+//use Neos\Flow\Http\Component\ComponentInterface;
+use Neos\Flow\Http\Component\ComponentContext ;
 use Neos\Flow\Http\Cookie;
 use Neos\Neos\Domain\Service\ConfigurationContentDimensionPresetSource;
 use Psr\Http\Message\RequestInterface;
@@ -21,7 +21,7 @@ use PunktDe\Mautic\Mautic\MauticConnector;
 use Neos\Neos\Routing;
 use PunktDe\Mautic\Mautic\MauticFrontendUri;
 
-class RedirectToCorrectDimensionComponent implements ComponentInterface
+class RedirectToCorrectDimensionComponent #implements ComponentInterface
 {
 
     /**
