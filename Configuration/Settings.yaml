@@ -18,3 +18,6 @@ Neos:
           'PunktDe.Mautic:UpdateUser':
             implementationClassName: PunktDe\Mautic\Finishers\MauticUpdateUserFinisher
             options: { }
+          'PunktDe.Mautic:SendForm':
+            implementationClassName: PunktDe\Mautic\Finishers\MauticFormFinisher
+            options: { mauticId: integer }

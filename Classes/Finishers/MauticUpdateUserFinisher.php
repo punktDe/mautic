@@ -51,10 +51,7 @@ class MauticUpdateUserFinisher extends AbstractFinisher
      */
     protected function mauticUserIsIdentifiedByCookie(): bool
     {
-        $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
-        $cookie = $request->getCookie('mtc_id');
-
-        return $cookie === null ? false : true;
+        return $this->getMauticCookie() === null ? false : true;
     }
 
     /**
@@ -62,10 +59,18 @@ class MauticUpdateUserFinisher extends AbstractFinisher
      */
     protected function getUserIdFromCookie(): int
     {
-        $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
-        $leadMauticId = $request->getCookie('mtc_id');
-        return $leadMauticId->getValue() !== '' ? (int)$leadMauticId->getValue() : 0;
+        $leadMauticId = $this->getMauticCookie();
+        return $leadMauticId !== '' ? (int)$leadMauticId : 0;
+    }
 
+    /**
+     * @return ?string
+     */
+    protected function getMauticCookie(): ?string
+    {
+        $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
+        $cookies = $request->getCookieParams();
+        return isset($cookies['mtc_id']) ? $cookies['mtc_id'] : '';
     }
 
     /**
@@ -91,7 +96,7 @@ class MauticUpdateUserFinisher extends AbstractFinisher
     protected function getUtmTags(): array
     {
         $request = $this->finisherContext->getFormRuntime()->getRequest()->getHttpRequest();
-        $params = $request->getArguments();
+        parse_str($request->getUri()->getQuery(), $params);
         $utmTags = [];
         foreach ($params as $paramName => $paramValue) {
             if (strpos($paramName, 'utm_') !== false) {

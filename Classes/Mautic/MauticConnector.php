@@ -109,5 +109,13 @@ class MauticConnector
         return $this->api->newApi('contacts', $this->auth, $this->mauticApiUrl);
     }
 
+    public function submitForm($id, $data){
+      $data['formId'] = $id;
+      $url = rtrim(trim(str_replace('/api','',$this->mauticApiUrl), '/')) . '/form/submit?formId=' . $id;
+      $send_form = new SendFormService();
+      $send_form->submitForm($url, $data);
+
+    }
+
 
 }

@@ -13,6 +13,31 @@
           position: 60
           icon: 'icon-paperclip'
 
+'PunktDe.Mautic.FormBuilder:MauticFormSubmit':
+  superTypes:
+    'Neos.Form.Builder:AbstractFinisher': true
+  ui:
+    label: 'Submit form to Mautic'
+    icon: 'check-square-o'
+    inspector:
+      groups:
+        'finisher':
+          icon: 'icheck-square-o'
+        'finisher-attachments':
+          label: i18n
+          position: 60
+          icon: 'icon-paperclip'
+  properties:
+    'mauticFormId':
+      type: string
+      ui:
+        label: 'Mautic form ID'
+        reloadIfChanged: false
+        inspector:
+          group: 'finisher'
+          editor: 'Neos.Neos/Inspector/Editors/TextFieldEditor'
+
+
 
 'Neos.Form.Builder:FormElement':
   superTypes:
@@ -32,6 +57,13 @@
       type: string
       ui:
         label: 'Mautic Identifier'
+        reloadIfChanged: false
+        inspector:
+          group: 'mauticSection'
+    'mauticAlias':
+      type: string
+      ui:
+        label: 'Mautic Form Field HTML name'
         reloadIfChanged: false
         inspector:
           group: 'mauticSection'
